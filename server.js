@@ -10,7 +10,12 @@ const budget = require("./models/budget")
 /////////////////
 // Middleware
 /////////////////
+//parse
+app.use(express.urlencoded({ extended: false }));
+
+
 app.use(express.static("public"))
+
 
 
 /////////////////
@@ -23,8 +28,17 @@ app.get('/budget/', (req, res) => {
 })
 
 // NEW
+app.get('/budget/new/', (req, res) => {
+    res.render("new.ejs", {title: "New Budget Item Page"});
+})
 
-// CREATE
+//CREATE
+app.post("/budget", (req, res) => {
+    budget.push(req.body);
+    res.redirect("/budget");
+
+})
+
 
 // SHOW
 app.get('/budget/:indexOfBudget', (req, res) =>{
