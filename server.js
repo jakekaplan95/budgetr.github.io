@@ -17,12 +17,19 @@ app.use(express.static("public"))
 // Routes
 /////////////////
 
-// Index Route
-app.get('/', (req, res) => {
-    res.render('index.ejs')
+// INDEX
+app.get('/budget/', (req, res) => {
+    res.render('index.ejs', {budget, budget});
 })
 
+// NEW
 
+// CREATE
+
+// SHOW
+app.get('/budget/:indexOfBudget', (req, res) =>{
+    res.render("show.ejs", {budget: budget[req.params.indexOfBudget]});
+})
 
 
 // Listener
